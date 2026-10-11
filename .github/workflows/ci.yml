@@ -4,6 +4,7 @@ on:
   push:
     branches: [main, master]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   regress:
@@ -44,6 +45,16 @@ jobs:
             test/regression.diffs
             test/regression.out
             test/results/
+
+  clickhouse:
+    name: ClickHouse UDF
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests against the mock API
+        run: python3 -m unittest discover -s test/clickhouse -v
+      - name: End-to-end against clickhouse-server
+        run: test/clickhouse/e2e.sh
 
   lint-meta:
     name: Validate META.json
