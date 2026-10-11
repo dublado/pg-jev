@@ -150,6 +150,11 @@ An API key is only required for `*.typesafe.ai` hosts. For any other host the re
 `Authorization` header when no key is set, and with `Bearer <key>` when one is. The token counts and cost
 estimates in `jev_stats()` and the notices use TypeSafe's list price, whatever the server.
 
+## ClickHouse
+
+The same functions are available for ClickHouse as an executable UDF, with a persistent answer cache and a
+daily spend budget. See [clickhouse/README.md](clickhouse/README.md).
+
 ## Functions
 
 | Function | Returns | Purpose |

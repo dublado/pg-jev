@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- **ClickHouse support** as an executable UDF (`clickhouse/`): `jev`, `jev_prob`, `jev_choice`, `jev_score`,
+  `jev_score_norm`, `jev_confidence` and `jev_eval` with the same API contract, a SQLite answer cache shared by
+  the process pool, and a daily row budget. The PostgreSQL extension is unchanged. Tests in `test/clickhouse/`.
+
 ## [0.2.1] - 2026-10-03
 
 ### Changed
