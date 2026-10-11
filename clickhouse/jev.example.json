@@ -1,0 +1,13 @@
+{
+  "api_key": "your-typesafe-key",
+  "api_url": "https://api.typesafe.ai/v1/systemone",
+  "model": "jev-1.13.0",
+  "batch_size": 20,
+  "concurrency": 16,
+  "timeout": 30,
+  "retries": 6,
+  "keepalive": 600,
+  "cache_path": "/var/lib/clickhouse/jev_cache.sqlite",
+  "cache_ttl": 0,
+  "max_rows_per_day": 100000
+}

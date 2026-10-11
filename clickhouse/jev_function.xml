@@ -1,0 +1,23 @@
+<!-- Goes in /etc/clickhouse-server/ (matched by user_defined_executable_functions_config = *_function.xml).
+     jev_udf.py goes in the user_scripts directory (default /var/lib/clickhouse/user_scripts/). -->
+<functions>
+    <function>
+        <type>executable_pool</type>
+        <name>jev_eval</name>
+        <return_type>String</return_type>
+        <return_name>result</return_name>
+        <argument><type>String</type><name>row</name></argument>
+        <argument><type>String</type><name>question</name></argument>
+        <argument><type>String</type><name>kind</name></argument>
+        <argument><type>Array(String)</type><name>options</name></argument>
+        <format>JSONEachRow</format>
+        <command>jev_udf.py /etc/clickhouse-server/jev.json</command>
+        <send_chunk_header>1</send_chunk_header>
+        <!-- Persistent processes: each keeps its HTTPS connections warm. They share the SQLite answer cache. -->
+        <pool_size>4</pool_size>
+        <!-- A chunk is answered as a whole, and a 65k-row chunk is thousands of API requests. -->
+        <command_read_timeout>600000</command_read_timeout>
+        <command_write_timeout>600000</command_write_timeout>
+        <max_command_execution_time>600</max_command_execution_time>
+    </function>
+</functions>

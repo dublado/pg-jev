@@ -6,3 +6,12 @@ test/regression.out
 __pycache__/
 .DS_Store
 core
+
+# ClickHouse UDF
+__pycache__/
+*.pyc
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+clickhouse/jev.json
+.env
